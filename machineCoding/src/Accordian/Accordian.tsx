@@ -1,56 +1,60 @@
-import { useRef } from 'react';
-import './Accordian.css';
+import { useRef, useState } from "react";
+import "./Accordian.css";
 export default function Accordion() {
-    const accordianRef = useRef(null);
-    const handleAccordianClick = (e : React.SyntheticEvent) => {
-        console.log(e.target, accordianRef.current);
-        let elem = e.currentTarget.querySelector('accordion-icon')
+  const [accIndex, setAccIndex] = useState(-1);
+  const accordianRef = useRef(null);
+  const handleAccordianClick = (e: React.SyntheticEvent, index: number) => {
+    setAccIndex((accIndex) => (accIndex === index ? -1 : index));
+  };
 
-    }
+  type acc = {
+    title: string;
+    content: string;
+  };
 
-    type acc = {
-        title : string;
-        content : string
-    };
+  type accArr = acc[];
 
-    type accArr = acc[];
-
-    const getAccordianElements = (accArr: accArr) => {
-       return accArr.map((acc: acc) => {
-            return <div>
-                <div onClick={handleAccordianClick}  ref={accordianRef}>
-                    <span>{acc.title}</span>
-                    <span
-                        aria-hidden={true}
-                        className="accordion-icon"
+  const getAccordianElements = (accArr: accArr) => {
+    return accArr.map((acc: acc, index) => {
+      return (
+        <div className="accordian-wrap" key={index}>
+          <div
+            onClick={(e) => handleAccordianClick(e, index)}
+            ref={accordianRef}
+            className="accordianElement"
+          >
+            <span>{acc.title}</span>
+            <span
+              aria-hidden={true}
+              className={`accordion-icon ${index === accIndex ? "accordion-icon--rotated" : ""}`}
             />
-                </div>
-                <div>
-                    {acc.content}
-                </div>
-            </div>
-        });
-    }
+          </div>
+          {index === accIndex ? (
+            <div style={{ padding: "5px" }}>{acc.content}</div>
+          ) : null}
+        </div>
+      );
+    });
+  };
 
-    let accArray = [
-        {
-            title : 'HTML',
-            content : 'The HyperText Markup Language or HTML is the standard markup language for documents designed to be displayed in a web browser.'
-        },
-        {
-            title : 'CSS',
-            content : 'Cascading Style Sheets is a style sheet language used for describing the presentation of a document written in a markup language such as HTML or XML.'
-        },
-        {
-            title : 'JavaScript',
-            content : 'JavaScript, often abbreviated as JS, is a programming language that is one of the core technologies of the World Wide Web, alongside HTML and CSS.'
-        }
-        
-    ]
-    return (
-      <div className="accordian-container">
-        {getAccordianElements(accArray)}
-      </div>
-    );
-  }
-  
+  let accArray = [
+    {
+      title: "HTML",
+      content:
+        "The HyperText Markup Language or HTML is the standard markup language for documents designed to be displayed in a web browser.",
+    },
+    {
+      title: "CSS",
+      content:
+        "Cascading Style Sheets is a style sheet language used for describing the presentation of a document written in a markup language such as HTML or XML.",
+    },
+    {
+      title: "JavaScript",
+      content:
+        "JavaScript, often abbreviated as JS, is a programming language that is one of the core technologies of the World Wide Web, alongside HTML and CSS.",
+    },
+  ];
+  return (
+    <div className="accordian-container">{getAccordianElements(accArray)}</div>
+  );
+}

@@ -21,18 +21,24 @@ export default function Layout() {
       url: "multiLanguageSupport",
       name: "Multi-Language Support",
     },
+    {
+      url: "pagination",
+      name: "Pagination",
+    },
   ];
 
   return (
     <>
       <h3>Click on links to redirect to respective Section</h3>
-      {uiSectionsList.map(({ url, name }) => (
-        <p>
-          <Link key={url} to={url}>
-            {name}
-          </Link>
-        </p>
-      ))}
+      <div className="moduleLinks">
+        {uiSectionsList.map(({ url, name }) => (
+          <p>
+            <Link key={url} to={url}>
+              {name}
+            </Link>
+          </p>
+        ))}
+      </div>
       <Outlet />
     </>
   );
