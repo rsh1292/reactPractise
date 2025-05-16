@@ -4,7 +4,6 @@ import useMemeHook from "../useMemeHook";
 import { shimmer } from "./ShimmerUI";
 function ShimmerUI() {
   const memes = useMemeHook();
-  console.log("render", memes);
   return (
     <>
       <h2 className="heading">Shimmer and Infiniete Scroll</h2>

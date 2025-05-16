@@ -2,3 +2,10 @@ a {
   display: inline-block;
   margin-right: 5px;
 }
+
+.moduleLinks {
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+  background-color: antiquewhite;
+}

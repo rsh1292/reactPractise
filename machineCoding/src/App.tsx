@@ -4,6 +4,7 @@ import Accordion from "./Accordian/Accordian";
 import Layout from "./components/Layout";
 import ShimmerUI from "./Shimmer UI/Cards";
 import MultiLangSupport from "./MultiLangSupport/MultiLangSupport";
+import Pagination from "./Pagination/Pagination";
 function App() {
   return (
     <Routes>
@@ -14,6 +15,7 @@ function App() {
         path="/multiLanguageSupport"
         element={<MultiLangSupport />}
       ></Route>
+      <Route path="/pagination" element={<Pagination />} />
     </Routes>
   );
 }
