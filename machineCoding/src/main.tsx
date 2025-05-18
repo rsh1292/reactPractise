@@ -7,6 +7,7 @@ import App from "./App.tsx";
 import "./utils/i18n.ts";
 
 ReactGA.initialize("G-LSVFYLD40C");
+console.log("machineCoding branch");
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
     <BrowserRouter>
