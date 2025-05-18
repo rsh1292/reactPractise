@@ -1,4 +1,3 @@
-import React from "react";
 import "./Shimmer.css";
 type CardProps = {
   url: string;

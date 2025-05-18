@@ -3,7 +3,7 @@ export function shimmer() {
     <>
       {Array(15)
         .fill(0)
-        .map((n, i) => (
+        .map((_, i) => (
           <div
             key={i}
             style={{ padding: "10px", width: "300px", height: "300px" }}

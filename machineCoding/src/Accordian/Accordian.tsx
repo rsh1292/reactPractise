@@ -3,7 +3,7 @@ import "./Accordian.css";
 export default function Accordion() {
   const [accIndex, setAccIndex] = useState(-1);
   const accordianRef = useRef(null);
-  const handleAccordianClick = (e: React.SyntheticEvent, index: number) => {
+  const handleAccordianClick = (index: number) => {
     setAccIndex((accIndex) => (accIndex === index ? -1 : index));
   };
 
@@ -19,7 +19,7 @@ export default function Accordion() {
       return (
         <div className="accordian-wrap" key={index}>
           <div
-            onClick={(e) => handleAccordianClick(e, index)}
+            onClick={() => handleAccordianClick(index)}
             ref={accordianRef}
             className="accordianElement"
           >
